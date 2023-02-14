@@ -2,58 +2,33 @@ import java.util.*;
 
 public class Game {
     private Player winner;
-    private int minCells=100;
+    private int cellCount =100;
     private int ladderCount=10;
     private int snakeCount=10;
     private int playerCount=2;
-    private Ladders ladders;
-    private Snakes snakes;
+    private Ladder ladders;
+    private Snake snakes;
+    private Dice dice;
 
-    private Map<Player,Integer> playerPosition=new HashMap<>();
+    private Map<Player,Integer> playerPosition;
 
-    private ArrayDeque<Player> players=new ArrayDeque<>();
+    private ArrayDeque<Player> players;
     Scanner input=new Scanner(System.in);
 
 
-    public Game(String minCells, String ladderCount, String snakeCount, String playerCount) {
-        ladders=new Ladders();
-        snakes =new Snakes();
-        if(Numeric.isNumeric(minCells) && Integer.parseInt(minCells)>this.minCells){
-            this.minCells=Integer.parseInt(minCells);
-        }
+    public Game(int CellCount, int ladderCount, int snakeCount, int playerCount) {
+        playerPosition=new HashMap<>();
+        players=new ArrayDeque<>();
+        ladders=new Ladder(CellCount,ladderCount);
+        snakes =new Snake(CellCount,snakeCount,ladders);
+        dice=new Dice();
 
-        if (Numeric.isNumeric(ladderCount))
-        {
-            if (Integer.parseInt(ladderCount)<=this.minCells/4) {
-                this.ladderCount=Integer.parseInt(ladderCount);
-            }
-            else
-                this.ladderCount=this.minCells/10;
-        }
+        this.cellCount=CellCount;
+        this.ladderCount=ladderCount;
+        this.snakeCount=snakeCount;
+        this.playerCount=playerCount;
 
-        ladders.createLadders(this.minCells,this.ladderCount);
-        if (Numeric.isNumeric(snakeCount)){
-
-            if (Integer.parseInt(snakeCount)<=this.minCells/4) {
-                this.snakeCount=Integer.parseInt(snakeCount);
-            }
-            else
-                this.snakeCount=this.minCells/10;
-        }
-        snakes.createSnakes(this.minCells,this.snakeCount);
-
-        if (Numeric.isNumeric(playerCount)){
-            int PC=Integer.parseInt(playerCount);
-            if (PC>6){
-                this.playerCount=6;
-            } else if (PC<2) {
-                this.playerCount=2;
-            }
-            else this.playerCount=PC;
-
-        }
-
-        createPlayers(this.playerCount);
+        createPlayers(playerCount);
     }
 
     private void createPlayers(int playerCount){
@@ -73,7 +48,7 @@ public class Game {
     }
 
     public Player play(){
-        System.out.println("\nCells = "+minCells+ " : Ladders = "+ladderCount+" : Snakes = "+snakeCount);
+        System.out.println("\nCells = "+ cellCount + " : Ladders = "+ladderCount+" : Snakes = "+snakeCount);
         while (true)
         {
             System.out.println("\n---------------------------------------");
@@ -84,11 +59,11 @@ public class Game {
             {
                 System.out.println("\n");
                 int random= new Random().nextInt(7);
-                int move= random==0?1:random;
+                int move= dice.diceRoll();
 
                 movePlayer(players.peek(),move);
 
-                if (playerPosition.get(players.peek())==minCells)
+                if (playerPosition.get(players.peek())== cellCount)
                 {
                     winner=players.peek();
                     return players.peek();
@@ -122,7 +97,7 @@ public class Game {
     {
 
         System.out.println("You rolled "+move);
-        if(playerPosition.get(player)+move>minCells)
+        if(playerPosition.get(player)+move> cellCount)
         {
             System.out.println("You rolled more than you required to reach 100!");
             System.out.println("You can't move ahead!!");
