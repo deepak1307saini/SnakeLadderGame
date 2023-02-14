@@ -4,12 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Constant costants = new Constant();
+        Constant constants = new Constant();
 
-        int ladderCount = costants.getLadderCount();
-        int snakeCount = costants.getSnakeCount();
-        int PlayerCount = costants.getMinPlayerCount();
-        int cellCount = costants.getCellCount();
+        int ladderCount = constants.getLadderCount();
+        int snakeCount = constants.getSnakeCount();
+        int PlayerCount = constants.getMinPlayerCount();
+        int cellCount = constants.getCellCount();
 
 
         Scanner input = new Scanner(System.in);
@@ -32,8 +32,8 @@ public class Main {
 
         System.out.println("--------Enter players(👶) count------");
         int inputPlayerCount= inputUser();
-        if (inputPlayerCount>costants.getMaxPlayerCount())
-            PlayerCount=costants.getMaxPlayerCount();
+        if (inputPlayerCount>constants.getMaxPlayerCount())
+            PlayerCount=constants.getMaxPlayerCount();
         else if (inputPlayerCount>PlayerCount) {
             PlayerCount=inputPlayerCount;
         }

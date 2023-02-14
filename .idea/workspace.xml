@@ -8,15 +8,8 @@
     <list default="true" id="ae033701-e9b1-44c2-8871-66190b163ef7" name="Changes" comment="" />
 =======
     <list default="true" id="c81ce1b2-cd87-4a2b-abd6-c7ce389fb9fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ladders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ladder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Numeric.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snakes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
     </list>
 >>>>>>> 7e300b4 (Changes told by mentor)
     <option name="SHOW_DIALOG" value="false" />

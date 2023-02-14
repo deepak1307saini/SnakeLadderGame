@@ -95,37 +95,37 @@ public class Game {
 
     private void movePlayer(Player player, int move)
     {
-
+        int newPos=playerPosition.get(player)+move;
         System.out.println("You rolled "+move);
-        if(playerPosition.get(player)+move> cellCount)
+        if(newPos> cellCount)
         {
             System.out.println("You rolled more than you required to reach 100!");
             System.out.println("You can't move ahead!!");
               return;
         }
 
-        if (ladders.ladderStartContain(playerPosition.get(player)+move))
+        if (ladders.ladderStartContain(newPos))
         {
 
             System.out.println("😲! you landed on a ladder!!!");
-            System.out.println("You climb "+playerPosition.get(player)+ " to "+ladders.getLadderValue(playerPosition.get(player)+move)+" !!");
-            playerPosition.replace(player,ladders.getLadderValue(playerPosition.get(player)+move));
+            System.out.println("You climb "+playerPosition.get(player)+ " to "+ladders.getLadderValue(newPos)+" !!");
+            playerPosition.replace(player,ladders.getLadderValue(newPos));
             
             return;
         }
 
-        if (snakes.snakeStartContain(playerPosition.get(player)+move))
+        if (snakes.snakeStartContain(newPos))
         {
 
             System.out.println("👎 You landed on a snake!!!");
-            System.out.println("You slip "+playerPosition.get(player)+" to "+snakes.getSnakeValue(playerPosition.get(player)+move)+" !!");
-            playerPosition.replace(player,snakes.getSnakeValue(playerPosition.get(player)+move));
+            System.out.println("You slip "+playerPosition.get(player)+" to "+snakes.getSnakeValue(newPos)+" !!");
+            playerPosition.replace(player,snakes.getSnakeValue(newPos));
 
             return;
         }
 
 
-        playerPosition.replace(player,playerPosition.get(player)+move);
+        playerPosition.replace(player,newPos);
         
         return;
     }
