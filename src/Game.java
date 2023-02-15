@@ -2,10 +2,10 @@ import java.util.*;
 
 public class Game {
     private Player winner;
-    private int cellCount =100;
-    private int ladderCount=10;
-    private int snakeCount=10;
-    private int playerCount=2;
+    private int cellCount;
+    private int ladderCount;
+    private int snakeCount;
+    private int playerCount;
     private Ladder ladders;
     private Snake snakes;
     private Dice dice;
